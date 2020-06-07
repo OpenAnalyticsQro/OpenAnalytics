@@ -8,6 +8,7 @@ main_logger.setLevel(logging.DEBUG)
 
 calendar_logger = logging.getLogger("OpenAnalytics.Calendar")
 auth_logger = logging.getLogger("OpenAnalytics.Auth")
+flask_logger = logging.getLogger("OpenAnalytics.Flask")
 
 # DEFINE HANDLERS FOR LOGGERS
 

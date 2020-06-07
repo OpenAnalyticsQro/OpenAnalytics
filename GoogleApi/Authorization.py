@@ -1,13 +1,13 @@
 import os
 import pickle
 
+import dotenv
 from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 
-from GoogleApi import GOOGLE_AUTH_SCOPES, TOKEN_CRED_PICKLE, GOOGLE_CRED_JSON
+from CommonOA import CREDENTIALS_PATH_ENV, PICKLE_PATH_ENV
+from GoogleApi import GOOGLE_AUTH_SCOPES, GOOGLE_CRED_JSON, TOKEN_CRED_PICKLE
 from Logger import authLogger as Log
-from CommonOA import PICKLE_PATH_ENV, CREDENTIALS_PATH_ENV
-import dotenv
 
 
 def authorization_request(scopes=None):
