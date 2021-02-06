@@ -15,19 +15,21 @@ def install_internals_paths():
     path_cred = os.path.join(path_dir, CRED_FOLDER)
     path_pickle = os.path.join(path_dir, PICKLE_FOLDER)
 
-    if os.path.isdir(path_cred):
-        # valid path
-        Log.info(f"Generating CREDENTIALS_PATH: {path_cred}")
-        dotenv.set_key(dotenv.find_dotenv(), CREDENTIALS_PATH_ENV, path_cred)
-    else:
-        Log.error(f"Inalid CREDENTIALS_PATH: {path_cred}")
+    if not os.path.isdir(path_cred):
+        # creatring cedential folds
+        Log.info(f"Crerating folder: {path_cred}")
+        os.mkdir(path_cred)
+    # valid path
+    Log.info(f"Generating CREDENTIALS_PATH: {path_cred}")
+    dotenv.set_key(dotenv.find_dotenv(), CREDENTIALS_PATH_ENV, path_cred)
 
-    if os.path.isdir(path_pickle):
-        # valid path
-        Log.info(f"Generating PICKLE_PATH: {path_pickle}")
-        dotenv.set_key(dotenv.find_dotenv(), PICKLE_PATH_ENV, path_pickle)
-    else:
-        Log.error(f"Invalid PICKLE_PATH: {path_pickle}")
+    if not os.path.isdir(path_pickle):
+        # creating pickle folder
+        Log.info(f"Generating folder: {path_pickle}")
+        os.mkdir(path_pickle)
+    # valid path
+    Log.info(f"Generating PICKLE_PATH: {path_pickle}")
+    dotenv.set_key(dotenv.find_dotenv(), PICKLE_PATH_ENV, path_pickle)
 
     return True
 

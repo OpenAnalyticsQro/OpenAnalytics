@@ -7,7 +7,7 @@ from os import getenv
 from CommonOA import LOCAL_TIME_ZONE
 import dotenv
 import inspect
-from GoogleApi import PEOPLE_SERVICE, PEOPLE_SERVICE_VERSION
+
 
 # CALENDARS IDS
 CALENDAR_EVENT = "calendar#event"
@@ -567,30 +567,35 @@ def calendar_event_list():
             break
 
 
-def contacts_test():
-    """ contact test """
-    creds = authorization_request(scopes=GOOGLE_AUTH_SCOPES)
-    service = build(PEOPLE_SERVICE, PEOPLE_SERVICE_VERSION, credentials=creds)
+eventCalendar = {
+  'summary': 'Test Event',
+  'description': 'Test event',
+  'start': {
+    'dateTime': '2020-06-16T17:00:00-00:00',
+    'timeZone': 'America/Mexico_City',
+  },
+  'end': {
+    'dateTime': '2020-06-16T17:30:00-00:00',
+    'timeZone': 'America/Mexico_City',
+  },
+}
 
-    # poner validacion de error
-    contactList = service.people().connections().list(resourceName="people/me", personFields="names,phoneNumbers").execute()
-    print(contactList)
-
-
-def calendar_send_event():
+def calendar_send_event(day=14):
     """ send event """
-    event = CalendarEvent()
-    event.summary = "Prueba desde compu"
-    event.start.set_time(year=2020, day=23, month=5, hour=18, minute=0)
-    event.end.set_time(year=2020, day=23, month=5, hour=18, minute=30)
-    print(event.event_to_json())
+    # event = CalendarEvent()
+    # event.summary = "Prueba desde compu"
+    # event.start.set_time(year=2020, day=14, month=6, hour=18, minute=0)
+    # event.end.set_time(year=2020, day=14, month=6, hour=18, minute=30)
+    # Log.info(event.event_to_json())
 
     creds = authorization_request(scopes=GOOGLE_AUTH_SCOPES)
     service = build(CALENDAR_SERVICE, CALENDAR_SERVICE_VERSION, credentials=creds)
-    service.events().insert(calendarId="primary", body=event.event_to_json()).execute()
+    # service.events().insert(calendarId="primary", body=event.event_to_json()).execute()
+    service.events().insert(calendarId="primary", body=eventCalendar).execute()
 
 
 if __name__ == "__main__":
     # calendar_event_list()
-    # calendar_send_event()
-    contacts_test()
+    calendar_send_event()
+    # contacts_test()
+

@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "/home/hirvin/Documents/Dev/devEnv/bin/python3",
+    "python.formatting.provider": "black"
+}
