@@ -30,6 +30,14 @@ DEBUG_LEVEL_FORMATS = {
     ),
 }
 
+DEBUG_LEVEL_DICT = {
+    "debug": logging.DEBUG,
+    "info": logging.INFO,
+    "warning": logging.WARNING,
+    "error": logging.ERROR,
+    "critical": logging.CRITICAL,
+}
+
 
 class OpenAnalyticsLoggerFormatter(logging.Formatter):
     """Logging Formatter to add colors and count warning / errors"""
