@@ -1,0 +1,5 @@
+from pathlib import Path
+
+GOOGLE_CREDENTIAL_PATH_FOLDER = Path(__file__).parent
+GOOGLE_CRED_JSON_FILE_NAME = 'google_client_credentials.json'
+GOOGLE_CRED_PATH_FILE = GOOGLE_CREDENTIAL_PATH_FOLDER / GOOGLE_CRED_JSON_FILE_NAME

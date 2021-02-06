@@ -11,7 +11,8 @@ main_logger = logging.getLogger("OA")
 debug_level = logging.DEBUG
 if ENV_DEBUG_LEVEL_PATH.exists():
     load_dotenv(ENV_DEBUG_LEVEL_PATH)
-    main_logger.setLevel(DEBUG_LEVEL_DICT[getenv(MAIN_DEBUG_LEVEL).lower()])
+    debug_level = DEBUG_LEVEL_DICT[getenv(MAIN_DEBUG_LEVEL).lower()]
+main_logger.setLevel(debug_level)
 
 
 
