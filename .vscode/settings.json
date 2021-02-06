@@ -1,4 +1,7 @@
 {
     "python.pythonPath": "/home/hirvin/Documents/Dev/devEnv/bin/python3",
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "files.exclude": {
+        "**/__pycache__": true
+    }
 }
