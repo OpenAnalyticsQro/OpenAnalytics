@@ -5,26 +5,27 @@ from google.auth.transport.requests import Request
 from google_auth_oauthlib.flow import InstalledAppFlow
 from OpenAnalytics.GoogleApi import GOOGLE_AUTH_SCOPES
 from OpenAnalytics.GoogleApi.Credentials import GOOGLE_CRED_PATH_FILE
-from OpenAnalytics.GoogleApi.Pickle import GOOGLE_PICK_FILE_PATH
+from OpenAnalytics.Data import OA_DATA_PICKLE_AUTH_FILE_PATH
+# from OpenAnalytics.GoogleApi.Pickle import GOOGLE_PICK_FILE_PATH
 
 
-def authorization_request(scopes=None):
+def authorization_request(scopes=None, cred_path=GOOGLE_CRED_PATH_FILE, pickle_file=OA_DATA_PICKLE_AUTH_FILE_PATH):
     """ process the authorization process """
     if scopes is None:
         log.error("AuthAPi- Invalid scopes.")
         return None
 
-    if GOOGLE_CRED_PATH_FILE.exists() is False:
-        log.error(f"Invalid google_client_credentials.json: {GOOGLE_CRED_PATH_FILE}")
+    if cred_path.exists() is False:
+        log.error(f"Invalid google_client_credentials.json: {cred_path}")
         return None
 
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
-    if GOOGLE_PICK_FILE_PATH.exists():
-        log.info(f"Reading TOKEN_CRED_PICKLE: {GOOGLE_PICK_FILE_PATH}")
-        with open(GOOGLE_PICK_FILE_PATH, "rb") as token:
+    if pickle_file.exists():
+        log.info(f"Reading TOKEN_CRED_PICKLE: {pickle_file}")
+        with open(pickle_file, "rb") as token:
             creds = pickle.load(token)
     
     # If there are no (valid) credentials available, let the user log in.
@@ -37,13 +38,22 @@ def authorization_request(scopes=None):
             flow = InstalledAppFlow.from_client_secrets_file(GOOGLE_CRED_PATH_FILE, scopes)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
-        with open(GOOGLE_PICK_FILE_PATH, "wb") as token:
-            log.info(f"Saving token_cred.pickle in {GOOGLE_PICK_FILE_PATH}")
+        with open(pickle_file, "wb") as token:
+            log.info(f"Saving token_cred.pickle in {pickle_file}")
             pickle.dump(creds, token)
 
     log.info("Authorization request process is completed.")
     return creds
 
 
+def remove_auth_access(pickle_file=OA_DATA_PICKLE_AUTH_FILE_PATH):
+    """ Remove acces to GOOGLE services """
+    if pickle_file.exists():
+        log.info(f"Removing Google services access: {pickle_file}")
+        pickle_file.unlink()
+    return True
+
+
 if __name__ == "__main__":
     authorization_request(scopes=GOOGLE_AUTH_SCOPES)
+    # remove_auth_access()

@@ -1,5 +1,0 @@
-from pathlib import Path
-
-GOOGLE_PICK_PATH_FOLDER = Path(__file__).parent
-GOOGLE_PICK_FILE_NAME = "token_cred.pickle"
-GOOGLE_PICK_FILE_PATH = GOOGLE_PICK_PATH_FOLDER / GOOGLE_PICK_FILE_NAME

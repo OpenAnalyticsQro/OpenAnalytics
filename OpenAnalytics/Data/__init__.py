@@ -1,0 +1,11 @@
+from pathlib import Path
+
+PICKLE_NAME_FOLDER = "Pickle"
+AUTH_NAME_FOLDER = "auth"
+
+# PATH Folders
+OA_DATA_PATH_FOLDER = Path(__file__).parent
+OA_DATA_PICKLE_PATH_FOLDER = OA_DATA_PATH_FOLDER / PICKLE_NAME_FOLDER
+
+# File Folders
+OA_DATA_PICKLE_AUTH_FILE_PATH = OA_DATA_PICKLE_PATH_FOLDER / AUTH_NAME_FOLDER / "token_cred.pickle"
