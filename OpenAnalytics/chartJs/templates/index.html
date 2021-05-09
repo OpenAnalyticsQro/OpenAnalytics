@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </head>
+    
+    <body>
+        <h1>Dental el Marques</h1>
+        <h2>Efectivo: {{data_cuentas["Efectivo"]}}</h2>
+        <h2>Diana (BBVA): {{data_cuentas["Diana"]}}</h2>
+        <h2>Mercado Pago: {{data_cuentas["Mercado Pago"]}}</h2>
+        <h2>Santander: {{data_cuentas["Santander"]}}</h2>
+        <h2>Hirvin (BBVA): {{data_cuentas["Hirvin"]}}</h2>
+        <canvas id="myChartBalance"></canvas>
+        <canvas id="myChartGanancia"></canvas>
+    </body>
+    <script type="text/javascript" src="{{url_for('static', filename='js/chart_balance.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/chart_ganancia.js')}}"></script>
+    
+</html>
