@@ -37,7 +37,6 @@ matplotlib==3.4.1
 mccabe==0.6.1
 numpy==1.20.2
 oauthlib==3.1.0
--e git+git@github.com:OpenAnalyticsQro/OpenAnalytics.git@a26c49efd2e79d9495634ce6f5af4b17c9ad92bb#egg=OpenAnalytics
 pandas==1.2.4
 parso==0.7.0
 pathspec==0.8.0
