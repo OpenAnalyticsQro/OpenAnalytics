@@ -1,4 +1,4 @@
-let url_data_ganancia = "http://127.0.0.1:5000/dataBalance";
+let url_data_ganancia = "http://192.168.211.130:5000/dataBalance";
 
 const configGanancia = {
   type: "line",
